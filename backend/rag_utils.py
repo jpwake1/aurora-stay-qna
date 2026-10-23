@@ -16,26 +16,26 @@ def retrieve(query: str, k: int = 2,vectorstore=None) -> list[str]:
 def generate(query, retrieved_chunks,model) -> str:
 
     prompt = f"""
-    You are an AI assistant answering questions about AuroraStay Hotels' policies and procedures.
+    You are an AI assistant answering questions about AuroraStay hotel policies.
 
     User Query:
     {query}
 
-    Retrieved Policy Information:
+    Retrieved Hotel Policy Information:
     {retrieved_chunks}
 
     Rules:
-    1. Use only information explicitly supported by the retrieved policy information.
+    1. Use only information explicitly supported by the retrieved hotel policy information.
     2. Do not use outside knowledge, assumptions, or information not present in the retrieved policy information.
-    3. Include all relevant information needed to answer the query completely.
-    4. Do not omit important conditions, restrictions, limitations, exceptions, fees, deadlines, or property-specific requirements.
+    3. Include the relevant information needed to answer the query completely.
+    4. Do not omit important conditions, restrictions, exceptions, or property- or rate-specific details.
     5. Focus only on information directly relevant to the user's query.
     6. Do not include unrelated information from the retrieved policy information.
-    7. Answer the user's specific question directly and ensure the response addresses what was asked.
+    7. Answer the user's specific question directly.
     8. Keep the answer concise, clear, and easy to understand.
-    9. Do not invent fees, cancellation deadlines, refund eligibility, property rules, services, or exceptions.
+    9. Do not invent amenities, fees, limits, cancellation terms, refund eligibility, conditions, or property-specific details.
     10. If the information is insufficient, say:
-        "The available policy documents do not contain enough information to answer this question."
+        "The available hotel policy documents do not contain enough information to answer this question."
         If the retrieved information conflicts, clearly mention the conflict.
 
     Answer:
